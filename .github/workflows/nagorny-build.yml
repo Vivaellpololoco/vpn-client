@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  CHANNEL: prod
+  CHANNEL: dev
   SENTRY_DSN: ""
 
 jobs:
