@@ -35,7 +35,7 @@ Artifacts хранятся на GitHub 90 дней.
    `ANDROID_SIGNING_KEY_PASSWORD`, `ANDROID_SIGNING_KEY_ALIAS` (= `nagorny`).
 3. Файл `nagorny.jks` и пароли хранить в надёжном месте. **Потеряете ключ — обновления поверх больше не встанут.**
 
-(Шаг подключения этих секретов в `nagorny-build.yml` ещё не добавлен.)
+Секреты уже добавлены (ноябрь 2026), сборка `nagorny-build.yml` подписывает APK ими сама. Ключ и пароль лежат на ПК в `C:SERSSALIAVPNSIGNING`.
 
 ## Windows: что увидят пользователи
 

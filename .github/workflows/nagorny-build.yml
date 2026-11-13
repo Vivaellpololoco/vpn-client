@@ -59,8 +59,30 @@ jobs:
         with:
           platform: android-apk
 
+      # The permanent Nagorny key (repository secrets), so a new APK installs over the old one.
+      # Without the secrets the APK is signed with the debug key.
+      - name: Set up the signing key
+        env:
+          SIGNING_KEY: ${{ secrets.ANDROID_SIGNING_KEY }}
+          STORE_PASSWORD: ${{ secrets.ANDROID_SIGNING_STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_SIGNING_KEY_ALIAS }}
+        run: |
+          if [ -z "$SIGNING_KEY" ]; then echo "No signing key: debug-signed APK"; exit 0; fi
+          echo "$SIGNING_KEY" | base64 --decode > android/key.jks
+          printf '%s=%s\n' \
+            storeFile "$PWD/android/key.jks" \
+            storePassword "$STORE_PASSWORD" \
+            keyPassword "$KEY_PASSWORD" \
+            keyAlias "$KEY_ALIAS" > android/key.properties
+
       - name: Build
         run: make android-apk-release
+
+      - name: Show the APK signer
+        run: |
+          apksigner=$(ls "$ANDROID_HOME"/build-tools/*/apksigner | tail -1)
+          "$apksigner" verify --print-certs build/app/outputs/flutter-apk/app-release.apk | grep -i "DN\|SHA-256" || true
 
       - name: Collect
         run: |
