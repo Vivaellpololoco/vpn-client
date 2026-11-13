@@ -133,7 +133,9 @@ Future<void> lazyBootstrap(WidgetsBinding widgetsBinding, Environment env) async
         () => container.read(connectionNotifierProvider.notifier).restoreConnectionOnStartup(),
         timeout: 5000,
       );
-      await _safeInit("system tray", () => container.read(systemTrayNotifierProvider.future), timeout: 1000);
+      // The tray icon often takes over a second on Windows; the app starts without waiting for it, and a
+      // real failure is still logged.
+      unawaited(_safeInit("system tray", () => container.read(systemTrayNotifierProvider.future)));
     }
 
     if (PlatformUtils.isAndroid) {
