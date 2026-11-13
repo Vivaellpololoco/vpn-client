@@ -5,10 +5,10 @@ import 'package:hiddify/core/app_info/app_info_provider.dart';
 import 'package:hiddify/core/localization/translations.dart';
 import 'package:hiddify/core/router/bottom_sheets/bottom_sheets_notifier.dart';
 import 'package:hiddify/features/home/widget/connection_button.dart';
+import 'package:hiddify/features/home/widget/home_server_list.dart';
 import 'package:hiddify/features/home/widget/local_proxy_hint.dart';
 import 'package:hiddify/features/profile/notifier/active_profile_notifier.dart';
 import 'package:hiddify/features/profile/widget/profile_tile.dart';
-import 'package:hiddify/features/proxy/active/active_proxy_card.dart';
 import 'package:hiddify/features/proxy/active/active_proxy_delay_indicator.dart';
 import 'package:hiddify/gen/assets.gen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -147,23 +147,20 @@ class HomePage extends HookConsumerWidget {
                               ),
                               _ => const Text(""),
                             },
-                            const SliverFillRemaining(
-                              hasScrollBody: false,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [ConnectionButton(), ActiveProxyDelayIndicator()],
-                                    ),
-                                  ),
-                                  ActiveProxyFooter(),
-                                  Gap(32),
-                                ],
+                            // Nagorny Express: the connect button, then the servers with their flags and
+                            // pings, all on the home page.
+                            const SliverToBoxAdapter(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(vertical: 24),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [ConnectionButton(), ActiveProxyDelayIndicator()],
+                                ),
                               ),
                             ),
+                            const HomeServerList(),
+                            // room for the quick settings tab over the list's end
+                            const SliverToBoxAdapter(child: Gap(56)),
                           ],
                         ),
                         // AsyncData() => switch (hasAnyProfile) {
