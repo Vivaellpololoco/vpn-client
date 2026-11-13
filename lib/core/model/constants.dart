@@ -4,15 +4,15 @@ import 'package:hiddify/utils/utils.dart';
 
 abstract class Constants {
   static const appName = "Nagorny Express";
-  static const githubUrl = "https://github.com/hiddify/hiddify-next";
+  static const githubUrl = "https://github.com/Vivaellpololoco/vpn-client";
   static const licenseUrl = "https://github.com/hiddify/hiddify-next?tab=License-1-ov-file#readme";
-  static const githubReleasesApiUrl = "https://api.github.com/repos/hiddify/hiddify-app/releases";
-  static const githubLatestReleaseUrl = "https://github.com/hiddify/hiddify-app/releases/latest";
-  static const telegramChannelUrl = "https://t.me/hiddify";
-  static const bugReportEmail = "bug@hiddify.com";
-  static const bugReportTelegramUrl = "https://t.me/hiddify_board";
-  static const privacyPolicyUrl = "https://hiddify.com/privacy-policy/";
-  static const termsAndConditionsUrl = "https://hiddify.com/terms/";
+  static const githubReleasesApiUrl = "https://api.github.com/repos/Vivaellpololoco/vpn-client/releases";
+  static const githubLatestReleaseUrl = "https://github.com/Vivaellpololoco/vpn-client/releases/latest";
+  static const telegramChannelUrl = "https://github.com/Vivaellpololoco/vpn-client";
+  static const bugReportEmail = "";
+  static const bugReportTelegramUrl = "https://github.com/Vivaellpololoco/vpn-client/issues";
+  static const privacyPolicyUrl = "https://github.com/Vivaellpololoco/vpn-client/blob/main/docs/NAGORNY_RU.md";
+  static const termsAndConditionsUrl = "https://github.com/Vivaellpololoco/vpn-client/blob/main/docs/NAGORNY_RU.md";
   static const cfWarpPrivacyPolicy = "https://www.cloudflare.com/application/privacypolicy/";
   static const cfWarpTermsOfService = "https://www.cloudflare.com/application/terms/";
 }

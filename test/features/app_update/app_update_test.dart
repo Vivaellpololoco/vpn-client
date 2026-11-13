@@ -50,10 +50,10 @@ void main() {
       _release(
         'v5.4.0',
         assets: [
-          'Hiddify-Android-arm64.apk',
+          'NagornyExpress-Android-arm64.apk',
           'Hiddify-Android-arm7.apk',
           'Hiddify-Android-x86_64.apk',
-          'Hiddify-Android-universal.apk',
+          'NagornyExpress-Android-universal.apk',
           'Hiddify-Windows-Setup-x64.exe',
           'Hiddify-Windows-Setup-x64.Msix',
           'Hiddify-Windows-Portable-x64.zip',
@@ -67,11 +67,11 @@ void main() {
     String? asset(InstallKind kind, {List<String> abis = const []}) => kind.assetIn(release, abis: abis)?.name;
 
     test('an APK is the one of the device ABI, else the universal one', () {
-      expect(asset(InstallKind.androidApk, abis: ['arm64-v8a', 'armeabi-v7a']), 'Hiddify-Android-arm64.apk');
+      expect(asset(InstallKind.androidApk, abis: ['arm64-v8a', 'armeabi-v7a']), 'NagornyExpress-Android-arm64.apk');
       expect(asset(InstallKind.androidApk, abis: ['armeabi-v7a']), 'Hiddify-Android-arm7.apk');
       expect(asset(InstallKind.androidApk, abis: ['x86_64']), 'Hiddify-Android-x86_64.apk');
-      expect(asset(InstallKind.androidApk, abis: ['riscv64']), 'Hiddify-Android-universal.apk');
-      expect(asset(InstallKind.androidApk), 'Hiddify-Android-universal.apk');
+      expect(asset(InstallKind.androidApk, abis: ['riscv64']), 'NagornyExpress-Android-universal.apk');
+      expect(asset(InstallKind.androidApk), 'NagornyExpress-Android-universal.apk');
     });
 
     test('each desktop install takes its own format, never a store build', () {

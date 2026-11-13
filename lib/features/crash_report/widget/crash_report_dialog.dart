@@ -70,12 +70,13 @@ class CrashReportDialog extends HookConsumerWidget {
                   t.dialogs.crashReport.sendHiddify,
                   t.dialogs.crashReport.sendHiddifyMsg,
                 ),
-              option(
-                ReportChannel.email,
-                FluentIcons.mail_20_regular,
-                t.dialogs.crashReport.sendEmail,
-                Constants.bugReportEmail,
-              ),
+              if (Constants.bugReportEmail.isNotEmpty)
+                option(
+                  ReportChannel.email,
+                  FluentIcons.mail_20_regular,
+                  t.dialogs.crashReport.sendEmail,
+                  Constants.bugReportEmail,
+                ),
               option(
                 ReportChannel.telegram,
                 FluentIcons.send_20_regular,
